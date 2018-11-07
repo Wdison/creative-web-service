@@ -27,12 +27,12 @@ public class BrainwritingIdeia extends Ideia {
 	@ApiModelProperty(hidden = true)
 	@OneToMany
 	@JoinColumn(name = "ideia_id")
-	private List<Avaliacao> avaliacoes;
+	private List<BrainwritingAvaliacao> avaliacoes;
 
 	@ApiModelProperty(hidden = true)
 	@OneToMany
 	@JoinColumn(name = "ideia_id")
-	private List<Comentario> comentarios;
+	private List<BrainwritingComentario> comentarios;
 
 	@Override
 	@JsonView({ BrainwritingViews.BrainwritingDetalhes.class, BrainwritingViews.IdeiaDetalhes.class })
@@ -78,11 +78,11 @@ public class BrainwritingIdeia extends Ideia {
 	}
 
 	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
-	public List<Avaliacao> getAvaliacoes() {
+	public List<BrainwritingAvaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
 
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+	public void setAvaliacoes(List<BrainwritingAvaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 
@@ -92,11 +92,11 @@ public class BrainwritingIdeia extends Ideia {
 	}
 
 	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
-	public List<Comentario> getComentarios() {
+	public List<BrainwritingComentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
+	public void setComentarios(List<BrainwritingComentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 

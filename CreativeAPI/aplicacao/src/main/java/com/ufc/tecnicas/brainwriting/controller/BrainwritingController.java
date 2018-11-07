@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ufc.modulos.pessoas.IPessoaService;
-import com.ufc.tecnicas.brainwriting.model.Avaliacao;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingAvaliacao;
 import com.ufc.tecnicas.brainwriting.model.Brainwriting;
 import com.ufc.tecnicas.brainwriting.model.BrainwritingIdeia;
 import com.ufc.tecnicas.brainwriting.model.BrainwritingViews;
-import com.ufc.tecnicas.brainwriting.model.Comentario;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingComentario;
 import com.ufc.tecnicas.brainwriting.service.IBrainwritingService;
 import com.ufc.tecnicas.model.Pessoa;
 
@@ -111,8 +111,8 @@ public class BrainwritingController {
 	@ApiOperation(value = "Adiciona uma nova avaliação a uma idéia existente")
 	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
 	@PostMapping(value = "ideia/{idIdeia}/avaliacao", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Avaliacao> adicionarAvaliacao(@PathVariable("idIdeia") BrainwritingIdeia ideia,
-			@RequestBody Avaliacao avaliacao) {
+	public ResponseEntity<BrainwritingAvaliacao> adicionarAvaliacao(@PathVariable("idIdeia") BrainwritingIdeia ideia,
+			@RequestBody BrainwritingAvaliacao avaliacao) {
 		brainwritingService.adicionarAvaliacao(ideia, avaliacao);
 		return new ResponseEntity<>(avaliacao, HttpStatus.OK);
 	}
@@ -120,8 +120,8 @@ public class BrainwritingController {
 	@ApiOperation(value = "Adiciona um novo comentário a uma idéia existente")
 	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
 	@PostMapping(value = "ideia/{idIdeia}/comentario", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public HttpEntity<Comentario> adicionarComentario(@PathVariable("idIdeia") BrainwritingIdeia ideia,
-			@RequestBody Comentario comentario) {
+	public HttpEntity<BrainwritingComentario> adicionarComentario(@PathVariable("idIdeia") BrainwritingIdeia ideia,
+			@RequestBody BrainwritingComentario comentario) {
 		brainwritingService.adicionarComentario(ideia, comentario);
 		return new ResponseEntity<>(comentario, HttpStatus.OK);
 	}

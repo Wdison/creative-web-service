@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufc.tecnicas.ideaAdvocate.model.AdvocateIdeia;
-import com.ufc.tecnicas.ideaAdvocate.model.Avaliacao;
-import com.ufc.tecnicas.ideaAdvocate.model.Comentario;
+import com.ufc.tecnicas.ideaAdvocate.model.AdvocateAvaliacao;
+import com.ufc.tecnicas.ideaAdvocate.model.AdvocateComentario;
 import com.ufc.tecnicas.ideaAdvocate.model.IdeiaAdvocate;
 import com.ufc.tecnicas.ideaAdvocate.repository.AdvocateAvaliacaoRepository;
 import com.ufc.tecnicas.ideaAdvocate.repository.AdvocateComentarioRepository;
@@ -54,13 +54,13 @@ public class IdeiaAdvocateService implements IIdeiaAdvocateService {
 	}
 
 	@Override
-	public void adicionarComentario(Comentario comentario, AdvocateIdeia ideia) {
+	public void adicionarComentario(AdvocateComentario comentario, AdvocateIdeia ideia) {
 		comentario.setIdeia(ideia);
 		comentarioRepository.save(comentario);
 	}
 
 	@Override
-	public void adicionarAvaliacao(Avaliacao avaliacao, AdvocateIdeia ideia) {
+	public void adicionarAvaliacao(AdvocateAvaliacao avaliacao, AdvocateIdeia ideia) {
 		avaliacao.setIdeia(ideia);
 		avaliacaoRepository.save(avaliacao);
 	}

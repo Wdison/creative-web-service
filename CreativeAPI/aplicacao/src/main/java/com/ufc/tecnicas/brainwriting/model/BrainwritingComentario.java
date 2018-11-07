@@ -1,41 +1,42 @@
-package com.ufc.tecnicas.ideaAdvocate.model;
+package com.ufc.tecnicas.brainwriting.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ufc.tecnicas.model.Pessoa;
-import com.ufc.util.json.CalendarDeserialize;
-import com.ufc.util.json.CalendarSerialize;
 
 @Entity
-@Table(name = "advocate_comentario")
-public class Comentario {
+@Table(name = "brainwriting_comentario")
+public class BrainwritingComentario {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@Column(columnDefinition = "TEXT")
 	private String texto;
 
-	@JsonSerialize(using = CalendarSerialize.class)
-	@JsonDeserialize(using = CalendarDeserialize.class)
+//	@JsonSerialize(using = CalendarSerialize.class)
+//	@JsonDeserialize(using = CalendarDeserialize.class)
+        @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Calendar data;
 
 	@ManyToOne
 	private Pessoa autor;
 
 	@ManyToOne
-	private AdvocateIdeia ideia;
+	private BrainwritingIdeia ideia;
 
-	@JsonView(AdvocateViews.IdeiaDetalhes.class)
+	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
 	public Long getId() {
 		return id;
 	}
@@ -44,7 +45,7 @@ public class Comentario {
 		this.id = id;
 	}
 
-	@JsonView(AdvocateViews.IdeiaDetalhes.class)
+	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
 	public String getTexto() {
 		return texto;
 	}
@@ -53,7 +54,7 @@ public class Comentario {
 		this.texto = texto;
 	}
 
-	@JsonView(AdvocateViews.IdeiaDetalhes.class)
+	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
 	public Calendar getData() {
 		return data;
 	}
@@ -66,20 +67,21 @@ public class Comentario {
 		return autor;
 	}
 
-	@JsonView(AdvocateViews.IdeiaDetalhes.class)
-	public PessoaAdvocate autor() {
-		return new PessoaAdvocate(autor);
-	}
-
 	public void setAutor(Pessoa autor) {
 		this.autor = autor;
 	}
 
-	public AdvocateIdeia getIdeia() {
+	@JsonView(BrainwritingViews.IdeiaDetalhes.class)
+	public PessoaBrainwriting autor() {
+		return new PessoaBrainwriting(autor);
+	}
+
+	@JsonIgnore
+	public BrainwritingIdeia getIdeia() {
 		return ideia;
 	}
 
-	public void setIdeia(AdvocateIdeia ideia) {
+	public void setIdeia(BrainwritingIdeia ideia) {
 		this.ideia = ideia;
 	}
 
@@ -99,7 +101,7 @@ public class Comentario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comentario other = (Comentario) obj;
+		BrainwritingComentario other = (BrainwritingComentario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

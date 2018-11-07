@@ -11,7 +11,7 @@ import com.ufc.tecnicas.model.Pessoa;
 
 @Entity
 @Table(name = "advocate_avaliacao")
-public class Avaliacao {
+public class AdvocateAvaliacao {
 
 	@Id
 	@GeneratedValue
@@ -80,7 +80,7 @@ public class Avaliacao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Avaliacao other = (Avaliacao) obj;
+		AdvocateAvaliacao other = (AdvocateAvaliacao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

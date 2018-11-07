@@ -23,10 +23,10 @@ public class AdvocateIdeia extends Ideia {
 	private Pessoa autor;
 
 	@OneToMany(mappedBy = "ideia")
-	private List<Comentario> comentarios;
+	private List<AdvocateComentario> comentarios;
 
 	@OneToMany(mappedBy = "ideia")
-	private List<Avaliacao> votos;
+	private List<AdvocateAvaliacao> votos;
 
 	@Enumerated(EnumType.STRING)
 	private Status status;
@@ -74,11 +74,11 @@ public class AdvocateIdeia extends Ideia {
 	}
 
 	@JsonView(AdvocateViews.IdeiaDetalhes.class)
-	public List<Comentario> getComentarios() {
+	public List<AdvocateComentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
+	public void setComentarios(List<AdvocateComentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 
@@ -88,11 +88,11 @@ public class AdvocateIdeia extends Ideia {
 	}
 
 	@JsonView(AdvocateViews.IdeiaDetalhes.class)
-	public List<Avaliacao> getVotos() {
+	public List<AdvocateAvaliacao> getVotos() {
 		return votos;
 	}
 
-	public void setVotos(List<Avaliacao> votos) {
+	public void setVotos(List<AdvocateAvaliacao> votos) {
 		this.votos = votos;
 	}
 

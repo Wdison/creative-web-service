@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ufc.tecnicas.ideaAdvocate.model.AdvocateIdeia;
 import com.ufc.tecnicas.ideaAdvocate.model.AdvocateViews;
-import com.ufc.tecnicas.ideaAdvocate.model.Avaliacao;
-import com.ufc.tecnicas.ideaAdvocate.model.Comentario;
+import com.ufc.tecnicas.ideaAdvocate.model.AdvocateAvaliacao;
+import com.ufc.tecnicas.ideaAdvocate.model.AdvocateComentario;
 import com.ufc.tecnicas.ideaAdvocate.model.IdeiaAdvocate;
 import com.ufc.tecnicas.ideaAdvocate.service.IIdeiaAdvocateService;
 import com.ufc.tecnicas.model.Pessoa;
@@ -84,19 +84,19 @@ public class IdeiaAdvocateController {
 	@ApiOperation(value = "Adicionar avaliação em uma ideia")
 	@JsonView(AdvocateViews.IdeiaDetalhes.class)
 	@PostMapping(value = "/ideia/{idIdeia}/avaliacao", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Avaliacao> adicionarAvaliacao(@RequestBody Avaliacao avaliacao,
+	public ResponseEntity<AdvocateAvaliacao> adicionarAvaliacao(@RequestBody AdvocateAvaliacao avaliacao,
 			@PathVariable("idIdeia") AdvocateIdeia ideia) {
 		advocateService.adicionarAvaliacao(avaliacao, ideia);
-		return new ResponseEntity<Avaliacao>(avaliacao, HttpStatus.OK);
+		return new ResponseEntity<AdvocateAvaliacao>(avaliacao, HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Adicionar comentário em uma ideia")
 	@JsonView(AdvocateViews.IdeiaDetalhes.class)
 	@PostMapping(value = "/ideia/{idIdeia}/comentario", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Comentario> adicionarComentario(@RequestBody Comentario comentario,
+	public ResponseEntity<AdvocateComentario> adicionarComentario(@RequestBody AdvocateComentario comentario,
 			@PathVariable("idIdeia") AdvocateIdeia ideia) {
 		advocateService.adicionarComentario(comentario, ideia);
-		return new ResponseEntity<Comentario>(comentario, HttpStatus.OK);
+		return new ResponseEntity<AdvocateComentario>(comentario, HttpStatus.OK);
 	}
 
 }

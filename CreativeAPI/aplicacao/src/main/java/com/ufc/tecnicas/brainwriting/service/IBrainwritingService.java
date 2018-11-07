@@ -2,9 +2,9 @@ package com.ufc.tecnicas.brainwriting.service;
 
 import java.util.List;
 
-import com.ufc.tecnicas.brainwriting.model.Avaliacao;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingAvaliacao;
 import com.ufc.tecnicas.brainwriting.model.Brainwriting;
-import com.ufc.tecnicas.brainwriting.model.Comentario;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingComentario;
 import com.ufc.tecnicas.brainwriting.model.BrainwritingIdeia;
 import com.ufc.tecnicas.model.Pessoa;
 
@@ -20,9 +20,9 @@ public interface IBrainwritingService {
 
 	void vincularParticipante(Pessoa pessoa, Brainwriting brainwriting);
 
-	public void adicionarAvaliacao(BrainwritingIdeia ideia, Avaliacao avaliacao);
+	public void adicionarAvaliacao(BrainwritingIdeia ideia, BrainwritingAvaliacao avaliacao);
 
-	public void adicionarComentario(BrainwritingIdeia ideia, Comentario comentario);
+	public void adicionarComentario(BrainwritingIdeia ideia, BrainwritingComentario comentario);
 
 	public List<Brainwriting> buscarBrainwritingPorPessoa(Pessoa pessoa);
 }

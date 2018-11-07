@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ufc.tecnicas.brainwriting.model.Avaliacao;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingAvaliacao;
 import com.ufc.tecnicas.brainwriting.model.Brainwriting;
 import com.ufc.tecnicas.brainwriting.model.BrainwritingIdeia;
-import com.ufc.tecnicas.brainwriting.model.Comentario;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingComentario;
 import com.ufc.tecnicas.brainwriting.repository.BrainwritingAvaliacaoRepository;
 import com.ufc.tecnicas.brainwriting.repository.BrainwritingComentarioRepository;
 import com.ufc.tecnicas.brainwriting.repository.BrainwritingIdeiaRepository;
@@ -64,13 +64,13 @@ public class BrainwritingService implements IBrainwritingService {
 	}
 
 	@Override
-	public void adicionarAvaliacao(BrainwritingIdeia ideia, Avaliacao avaliacao) {
+	public void adicionarAvaliacao(BrainwritingIdeia ideia, BrainwritingAvaliacao avaliacao) {
 		avaliacao.setIdeia(ideia);
 		avaliacaoRepository.save(avaliacao);
 	}
 
 	@Override
-	public void adicionarComentario(BrainwritingIdeia ideia, Comentario comentario) {
+	public void adicionarComentario(BrainwritingIdeia ideia, BrainwritingComentario comentario) {
 		comentario.setIdeia(ideia);
 		comentarioRepository.save(comentario);
 	}

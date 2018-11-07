@@ -1,5 +1,6 @@
 package com.ufc.tecnicas.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -10,17 +11,14 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.ufc.util.json.CalendarDeserialize;
-import com.ufc.util.json.CalendarSerialize;
+import javax.persistence.GenerationType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Ideia {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
 	private String titulo;
@@ -28,8 +26,9 @@ public abstract class Ideia {
 	@Column(columnDefinition = "TEXT")
 	private String texto;
 
-	@JsonSerialize(using = CalendarSerialize.class)
-	@JsonDeserialize(using = CalendarDeserialize.class)
+//	@JsonSerialize(using = CalendarSerialize.class)
+//	@JsonDeserialize(using = CalendarDeserialize.class)
+        @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Calendar data;
 
 	@ManyToOne

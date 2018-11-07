@@ -2,8 +2,8 @@ package com.ufc.tecnicas.brainwriting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ufc.tecnicas.brainwriting.model.Avaliacao;
+import com.ufc.tecnicas.brainwriting.model.BrainwritingAvaliacao;
 
-public interface BrainwritingAvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
+public interface BrainwritingAvaliacaoRepository extends JpaRepository<BrainwritingAvaliacao, Long> {
 
 }

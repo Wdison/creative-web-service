@@ -12,7 +12,7 @@ import com.ufc.tecnicas.model.Pessoa;
 
 @Entity
 @Table(name = "brainwriting_avaliacao")
-public class Avaliacao {
+public class BrainwritingAvaliacao {
 
 	@Id
 	@GeneratedValue
@@ -83,7 +83,7 @@ public class Avaliacao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Avaliacao other = (Avaliacao) obj;
+		BrainwritingAvaliacao other = (BrainwritingAvaliacao) obj;
 		if (autor == null) {
 			if (other.autor != null)
 				return false;
